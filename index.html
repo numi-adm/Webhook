@@ -27,8 +27,8 @@
       </div>
 
       <div class="flex bg-[#1e1f22] p-1 rounded-lg mb-5">
-        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 py-2 text-sm font-medium rounded-md bg-[#5865f2] text-white transition">เข้าสู่ระบบ (Login)</button>
-        <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 py-2 text-sm font-medium rounded-md text-[#949ba4] hover:text-white transition">สมัครสมาชิก (Register)</button>
+        <button id="tabLogin" type="button" onclick="switchAuthTab('login')" class="flex-1 py-2 text-sm font-medium rounded-md bg-[#5865f2] text-white transition">เข้าสู่ระบบ (Login)</button>
+        <button id="tabRegister" type="button" onclick="switchAuthTab('register')" class="flex-1 py-2 text-sm font-medium rounded-md text-[#949ba4] hover:text-white transition">สมัครสมาชิก (Register)</button>
       </div>
 
       <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
@@ -68,16 +68,16 @@
         <div class="flex flex-wrap items-center gap-2 flex-1 max-w-3xl">
           <select id="webhookSelect" onchange="onSelectWebhook()" class="bg-[#1e1f22] border border-[#3f4147] text-xs text-white rounded-lg px-2.5 py-2 focus:outline-none">
           </select>
-          <button onclick="createNewWebhook()" class="px-2.5 py-2 bg-[#35373c] hover:bg-[#404249] text-xs text-white rounded-lg border border-[#3f4147] transition">
+          <button type="button" onclick="createNewWebhook()" class="px-2.5 py-2 bg-[#35373c] hover:bg-[#404249] text-xs text-white rounded-lg border border-[#3f4147] transition">
             + ลิงก์ใหม่
           </button>
           <div class="flex-1 flex items-center bg-[#1e1f22] border border-[#3f4147] rounded-lg px-3 py-1.5 min-w-[220px]">
             <input id="webhookUrlInput" type="text" readonly class="bg-transparent text-xs font-mono text-emerald-400 w-full focus:outline-none" />
-            <button onclick="copyWebhookUrl()" id="copyBtn" class="ml-2 px-2.5 py-1 bg-[#5865f2] hover:bg-[#4752c4] text-white text-xs font-medium rounded transition shrink-0">
+            <button type="button" onclick="copyWebhookUrl()" id="copyBtn" class="ml-2 px-2.5 py-1 bg-[#5865f2] hover:bg-[#4752c4] text-white text-xs font-medium rounded transition shrink-0">
               คัดลอก URL
             </button>
           </div>
-          <button onclick="logout()" class="px-3 py-2 bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 text-xs font-medium rounded-lg transition">
+          <button type="button" onclick="logout()" class="px-3 py-2 bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 text-xs font-medium rounded-lg transition">
             ออกจากระบบ
           </button>
         </div>
@@ -124,8 +124,8 @@
         <div class="p-3 border-b border-[#3f4147] flex items-center justify-between">
           <span class="text-xs font-bold uppercase text-[#b5bac1]">ประวัติล่าสุด (100 รอบล่าสุด)</span>
           <div class="flex gap-1.5">
-            <button onclick="sendTestWebhook()" class="px-2 py-1 bg-[#5865f2] hover:bg-[#4752c4] text-[11px] text-white rounded transition">ทดสอบส่ง</button>
-            <button onclick="clearHistory()" class="px-2 py-1 bg-rose-600/20 hover:bg-rose-600/40 text-[11px] text-rose-400 rounded transition">ล้างข้อมูล</button>
+            <button type="button" onclick="sendTestWebhook()" class="px-2 py-1 bg-[#5865f2] hover:bg-[#4752c4] text-[11px] text-white rounded transition">ทดสอบส่ง</button>
+            <button type="button" onclick="clearHistory()" class="px-2 py-1 bg-rose-600/20 hover:bg-rose-600/40 text-[11px] text-rose-400 rounded transition">ล้างข้อมูล</button>
           </div>
         </div>
         <div id="historyList" class="flex-1 overflow-y-auto divide-y divide-[#3f4147]/50 p-2 space-y-1">
@@ -136,8 +136,8 @@
       <div class="lg:col-span-8 bg-[#2b2d31] border border-[#3f4147] rounded-xl flex flex-col max-h-[75vh]">
         <div class="p-3 border-b border-[#3f4147] flex items-center justify-between">
           <div class="flex gap-2">
-            <button onclick="setViewTab('dashboard')" id="btnTabDashboard" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#5865f2] text-white">แดชบอร์ดเกม</button>
-            <button onclick="setViewTab('raw')" id="btnTabRaw" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-[#949ba4] hover:text-white">Raw JSON</button>
+            <button type="button" onclick="setViewTab('dashboard')" id="btnTabDashboard" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#5865f2] text-white">แดชบอร์ดเกม</button>
+            <button type="button" onclick="setViewTab('raw')" id="btnTabRaw" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-[#949ba4] hover:text-white">Raw JSON</button>
           </div>
           <span id="selectedTimestamp" class="text-xs font-mono text-[#949ba4]"></span>
         </div>
@@ -149,23 +149,22 @@
   </div>
 
   <script>
-    // =========================================================================
-    // ใส่ค่า Project URL และ anon public key ของ Supabase ตรงนี้
-    // =========================================================================
-    const SUPABASE_URL = "[https://aondwwrgixptieromkam.supabase.co](https://aondwwrgixptieromkam.supabase.co)";
+    const SUPABASE_URL = "https://aondwwrgixptieromkam.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_VSqfYdp3DaJHbuiwvZF52A_pT2VkXyy";
-    // =========================================================================
 
-    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    var authMode = 'login';
+    var currentUser = null;
+    var userWebhooks = [];
+    var currentWebhookKey = '';
+    var messages = [];
+    var selectedMessageId = null;
+    var currentTab = 'dashboard';
+    var pollInterval = null;
+    var sb = null;
 
-    let authMode = 'login';
-    let currentUser = null;
-    let userWebhooks = [];
-    let currentWebhookKey = '';
-    let messages = [];
-    let selectedMessageId = null;
-    let currentTab = 'dashboard';
-    let pollInterval = null;
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
 
     function generateWebhookKey() {
       const idPart = Math.floor(100000000000000000 + Math.random() * 900000000000000000).toString();
@@ -196,6 +195,13 @@
       const errBox = document.getElementById('authError');
       const btn = document.getElementById('authSubmitBtn');
       errBox.classList.add('hidden');
+
+      if (!sb) {
+        errBox.textContent = 'โหลดไลบรารี Supabase ไม่สำเร็จ กรุณารีเฟรชหน้าเว็บ (Ctrl + F5)';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
       btn.disabled = true;
 
       try {
@@ -226,7 +232,7 @@
     }
 
     async function logout() {
-      await sb.auth.signOut();
+      if (sb) await sb.auth.signOut();
       currentUser = null;
       if (pollInterval) clearInterval(pollInterval);
       document.getElementById('appScreen').classList.add('hidden');
@@ -297,7 +303,6 @@
     }
 
     function updateWebhookUrlDisplay() {
-      // ชี้ไปที่ Supabase Edge Function โดยตรง
       const fullUrl = `${SUPABASE_URL}/functions/v1/webhook/${currentWebhookKey}`;
       document.getElementById('webhookUrlInput').value = fullUrl;
     }
@@ -311,7 +316,7 @@
     }
 
     async function refreshAllData() {
-      if (!currentWebhookKey || !currentUser) return;
+      if (!currentWebhookKey || !currentUser || !sb) return;
       try {
         const [msgRes, statRes] = await Promise.all([
           sb.from('webhook_messages')
@@ -480,13 +485,14 @@
       await refreshAllData();
     }
 
-    // ตรวจสอบ Session ค้างไว้เมื่อเปิดหน้าเว็บ
-    sb.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) {
-        currentUser = session.user;
-        initApp();
-      }
-    });
+    if (sb) {
+      sb.auth.getSession().then(({ data: { session } }) => {
+        if (session && session.user) {
+          currentUser = session.user;
+          initApp();
+        }
+      });
+    }
   </script>
 </body>
 </html>
